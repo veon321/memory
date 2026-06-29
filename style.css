@@ -33,23 +33,28 @@ body {
   align-items: center;
   cursor: pointer;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
 }
 
 .card-container img {
   max-width: 80%;
   max-height: 80%;
+  visibility: hidden;
+  transition: opacity 0.3s;
+}
+
+.card-container:has(.card.revealed) {
+  transform: rotateY(180deg);
+}
+
+.card.revealed {
+  visibility: visible !important;
+  transform: rotateY(180deg);
 }
 
 .addElement {
   padding: 10px;
-}
-
-.card-container img {
-  display: none;
-}
-
-.card.revealed {
-  display: block;
 }
 
 .info {

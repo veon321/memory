@@ -2,6 +2,8 @@ const buttonAddElement = document.getElementById("addElement");
 const container = document.getElementById("container");
 const timeRound = document.getElementById("time");
 const score = document.getElementById("score");
+const clickSound = new Audio("assets/sounds/click.mp3");
+const success = new Audio("assets/sounds/success.mp3");
 
 let cardsInGame = [];
 
@@ -65,6 +67,10 @@ container.addEventListener("click", (event) => {
 
   if (timeToEndRoundInterval) clearInterval(timeToEndRoundInterval);
 
+  clickSound.currentTime = 0;
+  clickSound.play();
+  clickSound.volume = 0.2;
+
   timeToEndRoundInterval = setInterval(() => {
     if (timeToEndRound <= 1) {
       clearInterval(timeToEndRoundInterval);
@@ -93,6 +99,9 @@ container.addEventListener("click", (event) => {
       score.innerHTML = `Score: ${currentScore}`;
       timeToEndRound = 500;
       timeRound.innerHTML = `${(timeToEndRound / 100).toFixed(2)}s`;
+      success.currentTime = 0;
+      success.play();
+      success.volume = 0.4;
     } else {
       // pudlo
       isLocked = true;
