@@ -49,7 +49,7 @@ function createCards() {
 
 let click = 0;
 let click1 = "";
-let timeToEndRound = 5;
+let timeToEndRound = 500;
 let timeToEndRoundInterval = null;
 let isLocked = false;
 let currentScore = 0;
@@ -70,18 +70,18 @@ container.addEventListener("click", (event) => {
       clearInterval(timeToEndRoundInterval);
       click = 0;
       card.classList.remove("revealed");
-      timeToEndRound = 5 + 1;
+      timeToEndRound = 500 + 100;
     }
     timeToEndRound -= 1;
-    timeRound.innerHTML = `${timeToEndRound}s`;
-  }, 1000);
+    timeRound.innerHTML = `${(timeToEndRound / 100).toFixed(2)}s`;
+  }, 10);
 
   console.log(card);
 
   if (!card) return;
   card.classList.add("revealed");
   if (click == 0) {
-    timeToEndRound = 5;
+    timeToEndRound = 500;
     click1 = card;
     click = 1;
   } else if (click === 1) {
@@ -91,14 +91,14 @@ container.addEventListener("click", (event) => {
       clearInterval(timeToEndRoundInterval);
       currentScore += 5 + timeToEndRound;
       score.innerHTML = `Score: ${currentScore}`;
-      timeToEndRound = 5;
-      timeRound.innerHTML = `${timeToEndRound}s`;
+      timeToEndRound = 500;
+      timeRound.innerHTML = `${(timeToEndRound / 100).toFixed(2)}s`;
     } else {
       // pudlo
       isLocked = true;
       clearInterval(timeToEndRoundInterval);
-      timeToEndRound = 5;
-      timeRound.innerHTML = `${timeToEndRound}s`;
+      timeToEndRound = 500;
+      timeRound.innerHTML = `${(timeToEndRound / 100).toFixed(2)}s`;
       setTimeout(() => {
         card.classList.remove("revealed");
         click1.classList.remove("revealed");
