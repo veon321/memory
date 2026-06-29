@@ -35,18 +35,41 @@ data();
 function createCards() {
   cardsInGame.forEach((card) => {
     const newElement = document.createElement("div");
-    newElement.classList.add("card");
+    newElement.classList.add("card-container");
     const imgElement = document.createElement("img");
     imgElement.src = card.image;
     imgElement.alt = card.name;
+    imgElement.classList.add("card");
     newElement.appendChild(imgElement);
     container.appendChild(newElement);
   });
 }
 
+let klik = 0;
+let klik1 = "nic";
+
 container.addEventListener("click", (event) => {
-  const clickedCard = event.target.closest(".card");
-  if (!clickedCard) return;
-  console.log("Kliknięto w kartę:", clickedCard);
-  clickedCard.classList.add("revealed");
+  const clickedCard = event.target.closest(".card-container");
+  const card = clickedCard.querySelector("img");
+
+  console.log(card);
+
+  if (!card) return;
+  card.classList.add("revealed");
+  if (klik == 0) {
+    klik1 = card;
+    klik = 1;
+  } else if (klik === 1) {
+    if (card.alt === klik1.alt) {
+      console.log("para");
+      klik = 0;
+    } else {
+      console.log("Pudło!");
+      setTimeout(() => {
+        card.classList.remove("revealed");
+        klik1.classList.remove("revealed");
+        klik = 0;
+      }, 1500);
+    }
+  }
 });
