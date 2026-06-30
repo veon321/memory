@@ -4,7 +4,7 @@ A fast, engaging, and fully interactive frontend Memory game designed to test an
 
 ## Live Demo
 
-[TUTAJ_WLEJ_LINK_DO_GITHUB_PAGES] (np. https://veon321.github.io/memory-game/)
+[(https://veon321.github.io/memory-game/)]
 
 ## Technologies Used
 
