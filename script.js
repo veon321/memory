@@ -9,7 +9,7 @@ const playAgain = document.getElementById("play-again");
 let cardsInGame = [];
 
 function data() {
-  fetch("/data/cards.json")
+  fetch("data/cards.json")
     .then((response) => {
       if (!response.ok) {
         throw new Error("Błąd przy pobieraniu pliku!");
