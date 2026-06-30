@@ -65,3 +65,32 @@ body {
   width: 100%;
   font-size: 24px;
 }
+
+.under-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.play-again {
+  background-color: transparent;
+  color: #1f2937;
+  border: 2px solid #1f2937;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.play-again:hover {
+  background-color: #1f2937;
+  color: #ffffff;
+}
+
+.hidden {
+  display: none;
+}
