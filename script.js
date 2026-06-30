@@ -36,7 +36,6 @@ function data() {
     });
 }
 data();
-console.log("test");
 
 function createCards() {
   cardsInGame.forEach((card) => {
