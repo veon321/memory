@@ -4,6 +4,7 @@ const timeRound = document.getElementById("time");
 const score = document.getElementById("score");
 const clickSound = new Audio("assets/sounds/click.mp3");
 const success = new Audio("assets/sounds/success.mp3");
+const playAgain = document.getElementById("play-again");
 
 let cardsInGame = [];
 
@@ -82,8 +83,6 @@ container.addEventListener("click", (event) => {
     timeRound.innerHTML = `${(timeToEndRound / 100).toFixed(2)}s`;
   }, 10);
 
-  console.log(card);
-
   if (!card) return;
   card.classList.add("revealed");
   if (click == 0) {
@@ -115,5 +114,28 @@ container.addEventListener("click", (event) => {
         isLocked = false;
       }, 1500);
     }
+    const cards = container.querySelectorAll(".card-container img");
+
+    const isGameOver = Array.from(cards).every((card) =>
+      card.classList.contains("revealed"),
+    );
+
+    if (isGameOver) {
+      playAgain.style.display = "block";
+    }
   }
 });
+
+function resetGame() {
+  const cards = container.querySelectorAll(".card-container img");
+
+  cards.forEach((card) => {
+    card.classList.remove("revealed");
+  });
+
+  playAgain.style.display = "none";
+
+  currentScore = 0;
+  score.innerHTML = `Score: 0`;
+}
+playAgain.addEventListener("click", resetGame);

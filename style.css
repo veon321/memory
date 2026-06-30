@@ -84,13 +84,10 @@ body {
   letter-spacing: 1px;
   cursor: pointer;
   transition: 0.3s;
+  display: none;
 }
 
 .play-again:hover {
   background-color: #1f2937;
   color: #ffffff;
-}
-
-.hidden {
-  display: none;
 }
